@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume | Divine's Webpage</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================================
+           RESUME PAGE
+           ========================================= */
+
+        .resume-page {
+            min-height: 100vh;
+            padding: 40px 20px 70px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* =========================================
+           PAGE TITLE
+           ========================================= */
+
+        .resume-title {
+            color: #f8e8c8;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 48px;
+            text-align: center;
+            margin: 15px 0 8px;
+            text-shadow:
+                2px 3px 8px rgba(0, 0, 0, 0.7);
+        }
+
+
+        .resume-subtitle {
+            color: #f8e8c8;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 16px;
+            font-style: italic;
+            text-align: center;
+            margin: 0 0 35px;
+        }
+
+
+        /* =========================================
+           ENVELOPE
+           ========================================= */
+
+        .resume-envelope {
+            position: relative;
+            width: min(950px, 94vw);
+            height: 620px;
+            perspective: 1600px;
+        }
+
+
+        /* =========================================
+           FRONT COVER
+           ========================================= */
+
+        .resume-cover {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px;
+            box-sizing: border-box;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ead5ac,
+                    #f8e8c8,
+                    #ead5ac
+                );
+
+            border: 5px solid #442253;
+            border-radius: 18px;
+
+            color: #442253;
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, 0.45);
+
+            z-index: 10;
+
+            transform-origin: left center;
+
+            transition:
+                transform 1.4s ease,
+                opacity 0.6s ease;
+        }
+
+
+        .cover-symbol {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+
+        .resume-cover h1 {
+            color: #442253;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 52px;
+            margin: 0 0 12px;
+        }
+
+
+        .cover-name {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+
+        .cover-course {
+            color: #6b4a76;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 16px;
+            font-style: italic;
+            margin: 5px 0 30px;
+        }
+
+
+        /* =========================================
+           OPEN BUTTON
+           ========================================= */
+
+        .open-resume {
+            border: none;
+
+            padding: 13px 30px;
+
+            border-radius: 30px;
+
+            background-color: #442253;
+
+            color: #f8e8c8;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 15px
+                rgba(68, 34, 83, 0.4);
+
+            transition: 0.3s;
+        }
+
+
+        .open-resume:hover {
+            background-color: #5c286f;
+
+            transform:
+                translateY(-3px)
+                scale(1.04);
+        }
+
+
+        /* =========================================
+           INSIDE RESUME
+           ========================================= */
+
+        .resume-inside {
+            position: absolute;
+            inset: 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ead5ac,
+                    #fff4da,
+                    #ead5ac
+                );
+
+            border: 5px solid #442253;
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transform: scale(0.96);
+
+            transition:
+                opacity 0.8s ease 0.5s,
+                transform 0.8s ease 0.5s;
+        }
+
+
+        /* =========================================
+           RESUME PANELS
+           ========================================= */
+
+        .resume-panel {
+            padding: 30px 23px;
+
+            box-sizing: border-box;
+
+            border-right:
+                1px solid
+                rgba(68, 34, 83, 0.2);
+
+            overflow-y: auto;
+        }
+
+
+        .resume-panel:last-child {
+            border-right: none;
+        }
+
+
+        .resume-panel:nth-child(1) {
+            background:
+                rgba(248, 232, 200, 0.9);
+        }
+
+
+        .resume-panel:nth-child(2) {
+            background:
+                rgba(255, 244, 218, 0.98);
+        }
+
+
+        .resume-panel:nth-child(3) {
+            background:
+                rgba(248, 232, 200, 0.9);
+        }
+
+
+        /* =========================================
+           PANEL HEADINGS
+           ========================================= */
+
+        .panel-icon {
+            display: block;
+
+            text-align: center;
+
+            font-size: 30px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .resume-panel h2 {
+            color: #442253;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            font-size: 22px;
+
+            text-align: center;
+
+            margin: 5px 0 20px;
+
+            padding-bottom: 10px;
+
+            border-bottom:
+                2px solid
+                rgba(68, 34, 83, 0.18);
+        }
+
+
+        /* =========================================
+           ABOUT ME
+           ========================================= */
+
+        .personal-info p {
+            color: #442253;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            margin: 12px 0;
+        }
+
+
+        .personal-info strong {
+            color: #5c286f;
+        }
+
+
+        .bio {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background:
+                rgba(68, 34, 83, 0.07);
+
+            border-left:
+                4px solid #7c4b8e;
+
+            border-radius: 10px;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           EDUCATION
+           ========================================= */
+
+        .education-item {
+            margin-bottom: 20px;
+
+            padding-left: 12px;
+
+            border-left:
+                4px solid #7c4b8e;
+        }
+
+
+        .education-item h3 {
+            color: #5c286f;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            font-size: 15px;
+
+            margin: 0 0 5px;
+        }
+
+
+        .education-item p {
+            color: #442253;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            margin: 3px 0;
+        }
+
+
+        .current-year {
+            display: inline-block;
+
+            margin-top: 6px;
+
+            padding: 5px 9px;
+
+            background-color: #442253;
+
+            color: #f8e8c8;
+
+            border-radius: 15px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           CLINICAL EXPERIENCE
+           ========================================= */
+
+        .clinical-item {
+            margin-bottom: 14px;
+
+            padding: 11px;
+
+            background:
+                rgba(68, 34, 83, 0.07);
+
+            border-radius: 9px;
+        }
+
+
+        .clinical-item h3 {
+            color: #5c286f;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            font-size: 14px;
+
+            margin: 0 0 5px;
+        }
+
+
+        .clinical-item p {
+            color: #442253;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+
+        /* =========================================
+           SKILLS
+           ========================================= */
+
+        .skills {
+            margin-top: 20px;
+
+            text-align: center;
+        }
+
+
+        .skill {
+            display: inline-block;
+
+            padding: 7px 10px;
+
+            margin: 4px 2px;
+
+            background:
+                rgba(68, 34, 83, 0.1);
+
+            color: #442253;
+
+            border-radius: 15px;
+
+            font-size: 12px;
+
+            border:
+                1px solid
+                rgba(68, 34, 83, 0.15);
+        }
+
+
+        /* =========================================
+           RESUME FOOTNOTE
+           ========================================= */
+
+        .resume-note {
+            margin-top: 20px;
+
+            padding: 13px;
+
+            background:
+                rgba(124, 75, 142, 0.08);
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================
+           CLOSE BUTTON
+           ========================================= */
+
+        .close-resume {
+            position: absolute;
+
+            bottom: 18px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 20;
+
+            border: none;
+
+            padding: 10px 22px;
+
+            border-radius: 25px;
+
+            background-color: #442253;
+
+            color: #f8e8c8;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.5s ease 1.2s,
+                background-color 0.3s;
+        }
+
+
+        .close-resume:hover {
+            background-color: #5c286f;
+        }
+
+
+        /* =========================================
+           OPEN ANIMATION
+           ========================================= */
+
+        .resume-envelope.opened .resume-cover {
+            transform:
+                rotateY(-105deg);
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .resume-envelope.opened .resume-inside {
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+
+        .resume-envelope.opened .close-resume {
+            opacity: 1;
+
+            pointer-events: auto;
+        }
+
+
+        /* =========================================
+           TABLET / IPAD
+           ========================================= */
+
+        @media (max-width: 900px) {
+
+            .resume-title {
+                font-size: 40px;
+            }
+
+
+            .resume-envelope {
+                width: 94vw;
+
+                height: 650px;
+            }
+
+
+            .resume-panel {
+                padding:
+                    25px 17px;
+            }
+
+
+            .resume-panel h2 {
+                font-size: 20px;
+            }
+
+        }
+
+
+        /* =========================================
+           PHONE
+           ========================================= */
+
+        @media (max-width: 600px) {
+
+            .resume-page {
+                padding:
+                    25px 10px 50px;
+            }
+
+
+            .resume-title {
+                font-size: 32px;
+            }
+
+
+            .resume-subtitle {
+                font-size: 14px;
+            }
+
+
+            .resume-envelope {
+                height: auto;
+
+                min-height: 950px;
+            }
+
+
+            .resume-cover h1 {
+                font-size: 38px;
+            }
+
+
+            .cover-name {
+                font-size: 20px;
+            }
+
+
+            .resume-inside {
+                grid-template-columns: 1fr;
+
+                overflow-y: auto;
+            }
+
+
+            .resume-panel {
+                min-height: 300px;
+
+                border-right: none;
+
+                border-bottom:
+                    1px solid
+                    rgba(68, 34, 83, 0.2);
+            }
+
+
+            .resume-panel:last-child {
+                border-bottom: none;
+            }
+
+
+            .close-resume {
+                bottom: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+         ========================================= -->
+
+    <header>
+
+        <div class="header">
+
+
+            <div class="header-Left">
+
+                <img
+                    src="PHOTOS/PHOTOS/book-icon.png"
+                    alt="Book icon"
+                >
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+                    My Resume
+                </a>
+
+            </div>
+
+
+            <div class="header-Right">
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a
+                    href="resume.html"
+                    class="active"
+                >
+                    Resume
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="testimonials.html">
+                    Testimonial
+                </a>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         RESUME
+         ========================================= -->
+
+    <main class="resume-page">
+
+
+        <h1 class="resume-title">
+            My Resume
+        </h1>
+
+
+        <p class="resume-subtitle">
+            A little document about my journey
+        </p>
+
+
+
+        <!-- =====================================
+             ENVELOPE
+             ===================================== -->
+
+        <div
+            class="resume-envelope"
+            id="resumeEnvelope"
+        >
+
+
+            <!-- =================================
+                 FRONT / COVER
+                 ================================= -->
+
+            <div class="resume-cover">
+
+                <div class="cover-symbol">
+                    ✦ 📖 ✦
+                </div>
+
+
+                <h1>
+                    MY RESUME
+                </h1>
+
+
+                <p class="cover-name">
+                    DIVINE ANGELICA L. JUBAN
+                </p>
+
+
+                <p class="cover-course">
+                    Bachelor of Science in Nursing
+                    <br>
+                    4th Year Student
+                </p>
+
+
+                <button
+                    class="open-resume"
+                    id="openResume"
+                >
+                    ✉️ Open Here
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================
+                 INSIDE
+                 ================================= -->
+
+            <div class="resume-inside">
+
+
+                <!-- =================================
+                     PANEL 1 — ABOUT ME
+                     ================================= -->
+
+                <section class="resume-panel">
+
+                    <span class="panel-icon">
+                        👤
+                    </span>
+
+
+                    <h2>
+                        About Me
+                    </h2>
+
+
+                    <div class="personal-info">
+
+                        <p>
+                            <strong>
+                                Name:
+                            </strong>
+                            DIVINE ANGELICA L. JUBAN
+                        </p>
+
+
+                        <p>
+                            <strong>
+                                Age:
+                            </strong>
+                            21 YRS.OLD
+                        </p>
+
+
+                        <p>
+                            <strong>
+                                Address:
+                            </strong>
+                            MARIA CRISTINA, ILIGAN CITY, LANAO DEL NORTE
+                        </p>
+
+                    </div>
+
+
+                    <div class="bio">
+
+                        I am Divine, a 4th year nursing
+                        student who is passionate about
+                        learning, helping others, and
+                        developing my skills.
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     PANEL 2 — EDUCATION
+                     ================================= -->
+
+                <section class="resume-panel">
+
+                    <span class="panel-icon">
+                        🎓
+                    </span>
+
+
+                    <h2>
+                        Education
+                    </h2>
+
+
+                    <div class="education-item">
+
+                        <h3>
+                            NAPOCOR Elementary School
+                        </h3>
+
+                        <p>
+                            Elementary School
+                        </p>
+
+                    </div>
+
+
+                    <div class="education-item">
+
+                        <h3>
+                            Iligan City National
+                            High School
+                        </h3>
+
+                        <p>
+                            Junior High School
+                        </p>
+
+                    </div>
+
+
+                    <div class="education-item">
+
+                        <h3>
+                            Our Lady of Perpetual
+                            Help Academy
+                        </h3>
+
+                        <p>
+                            Senior High School
+                        </p>
+
+                    </div>
+
+
+                    <div class="education-item">
+
+                        <h3>
+                            Mindanao State University –
+                            Iligan Institute of Technology
+                        </h3>
+
+                        <p>
+                            Bachelor of Science in Nursing
+                        </p>
+
+
+                        <span class="current-year">
+                            4th Year
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================
+                     PANEL 3 — EXPERIENCE + SKILLS
+                     ================================= -->
+
+                <section class="resume-panel">
+
+                    <span class="panel-icon">
+                        🏥
+                    </span>
+
+
+                    <h2>
+                        Clinical Experience
+                    </h2>
+
+
+                    <div class="clinical-item">
+
+                        <h3>
+                            AMCI
+                        </h3>
+
+                        <p>
+                            Clinical skills and
+                            patient-care experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="clinical-item">
+
+                        <h3>
+                            Gregorio T. Lluch
+                            Memorial Hospital (GTLMH)
+                        </h3>
+
+                        <p>
+                            Clinical nursing skills and
+                            hospital experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="clinical-item">
+
+                        <h3>
+                            Vicente Sotto Memorial
+                            Medical Center (VSMMC)
+                        </h3>
+
+                        <p>
+                            Clinical nursing experience
+                            in a healthcare setting.
+                        </p>
+
+                    </div>
+
+
+                    <div class="clinical-item">
+
+                        <h3>
+                            Psychiatric Ward
+                        </h3>
+
+                        <p>
+                            Clinical exposure in psychiatric
+                            nursing and behavioral-health
+                            activities.
+                        </p>
+
+                    </div>
+
+
+                    <h2>
+                        Skills
+                    </h2>
+
+
+                    <div class="skills">
+
+                        <span class="skill">
+                            Communication
+                        </span>
+
+                        <span class="skill">
+                            Teamwork
+                        </span>
+
+                        <span class="skill">
+                            Leadership
+                        </span>
+
+                        <span class="skill">
+                            Patient Care
+                        </span>
+
+                    </div>
+
+
+                    <div class="resume-note">
+
+                        Continuously learning and
+                        developing my nursing skills
+                        through education and clinical
+                        experience.
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 CLOSE BUTTON
+                 ================================= -->
+
+            <button
+                class="close-resume"
+                id="closeResume"
+            >
+                📩 Close Resume
+            </button>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+
+        <div class="footer">
+
+            © Copyright
+
+            <strong>
+                <span>
+                    Divine's Webpage
+                </span>
+            </strong>.
+
+            All Rights Reserved
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+
+    <script>
+
+        const resumeEnvelope =
+            document.getElementById(
+                "resumeEnvelope"
+            );
+
+
+        const openResume =
+            document.getElementById(
+                "openResume"
+            );
+
+
+        const closeResume =
+            document.getElementById(
+                "closeResume"
+            );
+
+
+        openResume.addEventListener(
+            "click",
+            function () {
+
+                resumeEnvelope.classList.add(
+                    "opened"
+                );
+
+            }
+        );
+
+
+        closeResume.addEventListener(
+            "click",
+            function () {
+
+                resumeEnvelope.classList.remove(
+                    "opened"
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
